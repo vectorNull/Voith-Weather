@@ -1,14 +1,15 @@
+import { formatToLocalTime } from "../../API/WeatherService";
 import { DateTimeP, Wrapper, Location } from "./TimeAndLocation.styles";
 
 
-const TimeAndLocation = () => {
+const TimeAndLocation = ({weather: { dt, timezone, name, country }}) => {
     return (
         <div>
             <Wrapper>
-                <DateTimeP>Tuesday, 31 May 2022 | Local Time: 12:30pm</DateTimeP>
+                <DateTimeP>{formatToLocalTime(dt, timezone)}</DateTimeP>
             </Wrapper>
             <Wrapper>
-                <Location>Heidenheim</Location>
+                <Location>{`${name}, ${country}`}</Location>
             </Wrapper>
         </div>
     )

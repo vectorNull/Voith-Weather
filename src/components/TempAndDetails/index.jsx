@@ -6,28 +6,27 @@ import {
     DetailsDiv,
 } from "./TempAndDetails.styles";
 import { UilTemperature, UilTear } from "@iconscout/react-unicons";
+import { iconUrl } from "../../API/WeatherService";
 
-const TempAndDetails = () => {
+const TempAndDetails = ({ weather: { details, icon, temp, humidity, feels_like }}) => {
     return (
         <div>
-            <SkyConditionsDiv>Cloudy</SkyConditionsDiv>
+            <SkyConditionsDiv>{details}</SkyConditionsDiv>
             <Wrapper>
-                <WeatherImage src='http://openweathermap.org/img/wn/01d@2x.png' />
-                <TemperatureP>34&deg;</TemperatureP>
+                <WeatherImage src={iconUrl(icon)} />
+                <TemperatureP>{temp.toFixed()}&deg;</TemperatureP>
                 <div
                     style={{
                         display: "flex",
                         flexDirection: "column",
-                        marginTop: "-0.5rem",
+                        marginTop: "0.5rem",
                     }}
                 >
                     <DetailsDiv>
                         <UilTemperature size={18} />
-                        Feels like:
-                        <span>34</span>
+                        Feels like: {feels_like.toFixed()}&deg;
                         <UilTear size={18} />
-                        Humidity:
-                        <span>45%</span>
+                        Humidity: {humidity}%
                     </DetailsDiv>
                 </div>
             </Wrapper>

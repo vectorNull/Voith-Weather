@@ -1,3 +1,4 @@
+import { iconUrl } from "../../API/WeatherService";
 import {
     ForecastDiv,
     ForecastLabelP,
@@ -5,7 +6,7 @@ import {
     LabelWrapper,
 } from "./Forecast.styles";
 
-const Forecast = ({ title }) => {
+const Forecast = ({ title, items }) => {
     return (
         <div>
             <LabelWrapper>
@@ -13,7 +14,8 @@ const Forecast = ({ title }) => {
             </LabelWrapper>
             <hr style={{ marginTop: "3px", marginBottom: "15px" }} />
             <ForecastWrapper>
-                <ForecastDiv>
+                {items.map((item, index) => (
+                <ForecastDiv key={index}>
                     <p
                         style={{
                             fontWeight: "lighter",
@@ -21,10 +23,10 @@ const Forecast = ({ title }) => {
                             color: "white",
                         }}
                     >
-                        4:30pm
+                        {item.title}
                     </p>
                     <img
-                        src='http://openweathermap.org/img/wn/01d@2x.png'
+                        src={iconUrl(item.icon)}
                         alt='weather'
                         style={{
                             width: "7",
@@ -39,125 +41,10 @@ const Forecast = ({ title }) => {
                             color: "white",
                         }}
                     >
-                        22&deg;
+                        {item.temp.toFixed()}&deg;
                     </p>
                 </ForecastDiv>
-                <ForecastDiv>
-                    <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "small",
-                            color: "white",
-                        }}
-                    >
-                        4:30pm
-                    </p>
-                    <img
-                        src='http://openweathermap.org/img/wn/01d@2x.png'
-                        alt='weather'
-                        style={{
-                            width: "7",
-                            marginTop: "1px",
-                            marginBottom: "1px",
-                        }}
-                    />
-                     <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "medium",
-                            color: "white",
-                        }}
-                    >
-                        22&deg;
-                    </p>
-                </ForecastDiv>
-                <ForecastDiv>
-                    <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "small",
-                            color: "white",
-                        }}
-                    >
-                        4:30pm
-                    </p>
-                    <img
-                        src='http://openweathermap.org/img/wn/01d@2x.png'
-                        alt='weather'
-                        style={{
-                            width: "7",
-                            marginTop: "1px",
-                            marginBottom: "1px",
-                        }}
-                    />
-                     <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "medium",
-                            color: "white",
-                        }}
-                    >
-                        22&deg;
-                    </p>
-                </ForecastDiv>
-                <ForecastDiv>
-                    <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "small",
-                            color: "white",
-                        }}
-                    >
-                        4:30pm
-                    </p>
-                    <img
-                        src='http://openweathermap.org/img/wn/01d@2x.png'
-                        alt='weather'
-                        style={{
-                            width: "7",
-                            marginTop: "1px",
-                            marginBottom: "1px",
-                        }}
-                    />
-                     <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "medium",
-                            color: "white",
-                        }}
-                    >
-                        22&deg;
-                    </p>
-                </ForecastDiv>
-                <ForecastDiv>
-                    <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "small",
-                            color: "white",
-                        }}
-                    >
-                        4:30pm
-                    </p>
-                    <img
-                        src='http://openweathermap.org/img/wn/01d@2x.png'
-                        alt='weather'
-                        style={{
-                            width: "7",
-                            marginTop: "1px",
-                            marginBottom: "1px",
-                        }}
-                    />
-                     <p
-                        style={{
-                            fontWeight: "lighter",
-                            fontSize: "medium",
-                            color: "white",
-                        }}
-                    >
-                        22&deg;
-                    </p>
-                </ForecastDiv>
+                ))}
             </ForecastWrapper>
         </div>
     );

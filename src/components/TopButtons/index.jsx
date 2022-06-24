@@ -1,6 +1,6 @@
 import { Wrapper, Button } from "./TopButtons.styles";
 
-const TopButtons = () => {
+const TopButtons = ({ setQuery }) => {
     const cities = [
         {
             id: 1,
@@ -18,11 +18,14 @@ const TopButtons = () => {
     return (
         <Wrapper>
             {cities.map((city) => (
-                <Button key={city.id}>
+                <Button
+                    key={city.id}
+                    onClick={() => setQuery({ q: city.title })}
+                >
                     {city.title}
                 </Button>
             ))}
-       </Wrapper>
+        </Wrapper>
     );
 };
 
